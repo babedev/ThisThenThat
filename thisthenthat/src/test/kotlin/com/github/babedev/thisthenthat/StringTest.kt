@@ -2,6 +2,7 @@ package com.github.babedev.thisthenthat
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class StringTest {
@@ -10,8 +11,9 @@ class StringTest {
     fun checkIsNotEmpty_callNext() {
         val next: (CharSequence) -> Unit = mock()
 
-        "hello".isNotEmpty(next)
+        val result = "hello".isNotEmpty(next)
 
         verify(next).invoke("hello")
+        assertEquals(true, result)
     }
 }
