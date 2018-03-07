@@ -3,9 +3,9 @@
 # ThisThenThat
 Control Kotlin code flow more easier
 
-#### Installation
+## Installation
 
-Gradle
+#### Gradle
 ```Gradle
 allprojects {
    repositories {
@@ -19,7 +19,7 @@ dependencies {
 }
 ```
 
-#### Usage
+## Usage
 
 ```Kotlin
 val greetMessage = someWhere()
