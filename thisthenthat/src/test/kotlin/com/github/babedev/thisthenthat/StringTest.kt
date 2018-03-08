@@ -8,12 +8,33 @@ import org.junit.Test
 class StringTest {
 
     @Test
-    fun checkIsNotEmpty_callNext() {
+    fun checkItemIsEmpty_callNext() {
+        val next: () -> Unit = mock()
+
+        val result = "".isEmpty(next)
+
+        verify(next).invoke()
+        assertEquals(true, result)
+    }
+
+    @Test
+    fun checkItemIsNotEmpty_callNext() {
         val next: (CharSequence) -> Unit = mock()
 
         val result = "hello".isNotEmpty(next)
 
         verify(next).invoke("hello")
+        assertEquals(true, result)
+    }
+
+    @Test
+    fun checkItemsAreNotEmpty_callNext() {
+        val items = ("hello" and "world")
+        val next: (Iterable<CharSequence>) -> Unit = mock()
+
+        val result = items.isNotEmpty(next)
+
+        verify(next).invoke(items)
         assertEquals(true, result)
     }
 }

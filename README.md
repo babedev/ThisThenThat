@@ -21,10 +21,23 @@ dependencies {
 
 ## Usage
 
+Check single string is not empty
+
 ```Kotlin
 val greetMessage = someWhere()
 
 greetMessage.isNotEmpty {
-      print(it)
+    print(it)
+}
+```
+
+Check multiple strings are not empty
+
+```Kotlin
+val greet = "greet"
+val message = "message"
+
+(greet and message).isNotEmpty {
+    it.forEach { print(it) }
 }
 ```
