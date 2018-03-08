@@ -19,7 +19,7 @@ inline fun <T : CharSequence> T.isNotEmpty(next: (T) -> Unit): Boolean {
 }
 
 inline fun <T : CharSequence, U : Iterable<T>> U.isNotEmpty(next: (U) -> Unit): Boolean {
-    if (this.any { it.isNotEmpty() }) {
+    if (this.all { it.isNotEmpty() }) {
         next(this)
         return true
     }
@@ -27,6 +27,11 @@ inline fun <T : CharSequence, U : Iterable<T>> U.isNotEmpty(next: (U) -> Unit): 
     return false
 }
 
-infix fun <T : CharSequence> T.and(x: CharSequence): Iterable<CharSequence> {
+infix fun <T : CharSequence> T.and(x: T): Iterable<CharSequence> {
     return arrayListOf(this, x)
+}
+
+infix fun <T : CharSequence> Iterable<T>.and(x: T): Iterable<CharSequence> {
+    (this as MutableCollection).add(x)
+    return this
 }

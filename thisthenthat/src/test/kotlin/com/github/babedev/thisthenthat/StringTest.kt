@@ -29,7 +29,7 @@ class StringTest {
 
     @Test
     fun checkItemsAreNotEmpty_callNext() {
-        val items = ("hello" and "world")
+        val items = "hello" and "world" and "!!!"
         val next: (Iterable<CharSequence>) -> Unit = mock()
 
         val result = items.isNotEmpty(next)
